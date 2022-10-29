@@ -1,0 +1,227 @@
+:root{
+  --bubble-width: 250px;
+  --bubble-height: 250px;
+  --bubble-inflated-width: 620px;
+  --bubble-inflated-height: 620px;
+}
+
+body {
+  font-family: Montserrat,sans-serif;
+  font-size: 16px;
+  line-height: 1.625em;
+  font-weight: 500;
+  color: #4d4d4d;
+  overflow-x: hidden;
+  background-color: #F9FAFF;
+}
+
+#body{
+  overflow-x: hidden;
+}
+
+.mb {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  position: relative;
+  z-index: 2;
+  padding: 16px 52px;
+  border-radius: 40px;
+  outline: none;
+  background-color: transparent;
+  border: thin solid #000;
+  color: #000;
+  transition: all .8s;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  border-radius: 20px;
+}
+
+.main>div{
+  padding: 10px;
+}
+
+.bubble{
+  background-color: #000;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10000;
+}
+
+.bubble.up{
+  top: -100px;
+  left: -100px;
+  width: var(--bubble-width);
+  height: var(--bubble-height);
+}
+
+h1{
+  font-weight: 700;
+}
+
+.bubble.down{
+  bottom: -90px;
+  right: -90px;
+  width: 200px;
+  height: 200px;
+}
+
+@keyframes inflate {
+  from{
+    width: 250px;
+    height: 250px;
+  }
+  to{
+    width: var(--bubble-inflated-width);
+    height: var(--bubble-inflated-height);
+  }
+}
+
+.inflate{
+  animation-name: inflate;
+  animation-duration: 2s;
+  width: var(--bubble-inflated-width);
+  height: var(--bubble-inflated-height);
+}
+
+.hide{
+  display: none !important;
+}
+
+.page{
+  position: fixed;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: flex;
+  padding: 20px;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+
+@keyframes deflate-up {
+  from{
+    width: var(--bubble-inflated-width);
+    height: var(--bubble-inflated-height);
+  }
+  to{
+    width: var(--bubble-width);
+    height: var(--bubble-height);
+  }
+}
+
+.deflate-up{
+  animation-name: deflate-up;
+  animation-duration: 2s;
+}
+
+
+@keyframes deflate-down {
+  from{
+    width: var(--bubble-inflated-width);
+    height: var(--bubble-inflated-height);
+  }
+  to{
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.deflate-down{
+  animation-name: deflate-down;
+  animation-duration: 2s;
+}
+
+.position-relative{
+  position: relative;
+}
+
+.close{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+}
+
+
+@keyframes move-up {
+  from{
+    top: 1000px;
+  }
+  to{
+    top: 0;
+  }
+}
+
+.move-up{
+  animation-name: move-up;
+  animation-duration: 3s;
+}
+
+.form{
+  position: relative;
+  width: 100%;
+}
+
+@keyframes move-down {
+  from{
+    top: 0;
+  }
+  to{
+    top: 1000px;
+  }
+}
+
+.move-down{
+  animation-name: move-down;
+  animation-duration: 3s;
+}
+
+input{
+  outline: none;
+  background-color: transparent;
+  border: unset;
+  border-bottom: solid thin #bbb;
+  margin-bottom: 70px;
+  color: #bbb;
+  width: 100%;
+}
+
+.form h1 {
+  margin-bottom: 50px;
+}
+
+.dark{
+  background-color: transparent;
+  color: #fff;
+  border: thin solid #fff;
+  transition: all .8s;
+}
+
+.dark:focus{
+  color: #4d4d4d;
+  background-color: #fff;
+}
+
+.border-width-none{
+  border-width: 0!important;
+}
+
+.mb:focus{
+  color: #fff;
+  background-color: #000;
+}
