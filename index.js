@@ -1,22 +1,28 @@
 const express = require('express');
 const path = require('path');
-const livereload = require("livereload");
-const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'));
 
-const connectLivereload = require("connect-livereload");
+if(process.NODE_ENV !== "production"){
 
-liveReloadServer.server.once("connection", () => {
-  setTimeout(() => {
-    liveReloadServer.refresh("/");
-  }, 100);
-});
+  const livereload = require("livereload");
+  const liveReloadServer = livereload.createServer();
+  liveReloadServer.watch(path.join(__dirname, 'public'));
+
+  const connectLivereload = require("connect-livereload");
+
+  liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+      liveReloadServer.refresh("/");
+    }, 100);
+  });
+
+  app.use(connectLivereload());
+
+}
 
 const port = 3000;
 
 const app = express();
 
-app.use(connectLivereload());
 
 app.use(express.static('public'));
 
