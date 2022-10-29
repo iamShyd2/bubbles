@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-if(process.NODE_ENV !== "production"){
+if(process.env.NODE_ENV !== "production"){
 
   const livereload = require("livereload");
   const liveReloadServer = livereload.createServer();
